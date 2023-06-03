@@ -3,7 +3,7 @@
 <!--  // 功能列表
 1.删除默认值
 1.注册功能
-3.背景图片,和登录的图标
+3.把“M”图标换了
 
 -->
 
@@ -113,7 +113,11 @@ export default defineComponent({
 <style lang="scss" scoped>
 body,
 html {
-    margin: 0;
+    margin: 0
+}
+
+body{
+    // background:url(../../img/wallpaper.jpg) no-repeat;
 }
 
 canvas {
@@ -126,6 +130,7 @@ canvas {
     display: flex;
     justify-content: center;
     align-items: center;
+    background:url(../../img/wallpaper.jpg) no-repeat;
 }
 
 .login-form {
