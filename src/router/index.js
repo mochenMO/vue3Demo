@@ -178,15 +178,74 @@
 
 
 
+// import { createRouter, createWebHashHistory } from 'vue-router'
+
+
+// const routes = [
+//     {
+//         path: '/login',
+//         name: 'Login', 
+//         component: () => import("../views/login/index.vue"),  
+//     }
+// ]
+
+
+// const router = createRouter({
+//     history: createWebHashHistory(),
+//     routes
+// })
+
+
+
+// export default router;
+
+
+
+
+// ==========================================================================================
+
+
+
+
 import { createRouter, createWebHashHistory } from 'vue-router'
 
+// import Index from '@/views/static/index.vue'
+// import LayoutAdmin from '@/layout/admin/index.vue'
 
+
+//白名单
+const whiteList = [
+    "/",
+    "/login"
+]
+import { useUserStore } from '../store/user'
+
+//路由表
 const routes = [
     {
-        path: '/login',
-        name: 'Login', 
-        component: () => import("../views/login/index.vue"),  
-    }
+        path: '/',                                               // url访问路径 
+        name: 'home',                                            // 命名路由
+        component:  () => import('../views/test/index.vue')     // 实际文件路径  
+    },
+    
+    // 登录页面
+    {
+        path: '/login',                                     // url访问路径 
+        name: 'login',                                      // 命名路由
+        component: () => import('../views/login/login.vue') // 实际文件路径  
+    },
+
+    // 404页面
+    {
+        path: '/:pathMatch(.*)*',
+        name: '404',
+        component: () => import('../views/404.vue')// 懒加载  
+    },
+
+    // test
+    {
+        path: '/classroom', name: 'classroom', component: () => import('../views/test/classroom.vue') //懒加载 
+    },
 ]
 
 
@@ -195,12 +254,23 @@ const router = createRouter({
     routes
 })
 
+//前置路由守卫
+//用户状态 user.js
+router.beforeEach((to, from, next) => {
+    const userStore = useUserStore();
 
+    if (whiteList.includes(to.path)) {
+        next();
+    }
+    else {
 
+        if (userStore.token && userStore.token.length > 0) {
+            next()
+        }
+        else {
+            next({ name: "login" })
+        }
+    }
+})
 export default router;
-
-
-
-
-
 
