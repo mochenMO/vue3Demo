@@ -225,7 +225,7 @@ const routes = [
     {
         path: '/',                                               // url访问路径 
         name: 'home',                                            // 命名路由
-        component:  () => import('../views/test/index.vue')     // 实际文件路径  
+        component:  () => import('../views/home/home.vue')      // 实际文件路径  
     },
     
     // 登录页面
@@ -235,16 +235,53 @@ const routes = [
         component: () => import('../views/login/login.vue') // 实际文件路径  
     },
 
-    // 404页面
     {
-        path: '/:pathMatch(.*)*',
-        name: '404',
-        component: () => import('../views/404.vue')// 懒加载  
+        path: '/home',                                          
+        component: () => import('../views/home/home.vue'),                                     
+        children:[
+            {
+                path: '', 
+                name:'userInfo',
+                component: () => import('../views/home/userInfo.vue')
+            },
+            {
+                path: 'userInfo', 
+                name:'userInfo',
+                component: () => import('../views/home/userInfo.vue')
+            },
+            {
+                path: 'userLevel', 
+                name: 'userLevel', 
+                component: () => import('../views/home/userLevel.vue')
+            },
+            {
+                path: 'userArticle', 
+                name: 'userArticle', 
+                component: () => import('../views/home/userArticle.vue')
+            },
+            {
+                path: 'memorabilia',
+                name: 'memorabilia',  
+                component: () => import('../views/home/memorabilia.vue')
+            },
+            {
+                path: 'userLog', 
+                name:'userLog',
+                component: () => import('../views/home/userLog.vue')
+            },
+        ]  
     },
 
     // test
     {
         path: '/classroom', name: 'classroom', component: () => import('../views/test/classroom.vue') //懒加载 
+    },
+
+    // 404页面
+    {
+        path: '/:pathMatch(.*)*',
+        name: '404',
+        component: () => import('../views/404.vue')
     },
 ]
 
