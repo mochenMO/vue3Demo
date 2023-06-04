@@ -5,7 +5,6 @@ const userLogin=(data)=>{
         url:'api/mobile/elogin', //fullpath=baseURL+url  http://api.jqrjq.cn/ + api/mobile/elogin
         method:'post',
         data,
-      
     })
 }
 const adminLogin=(data)=>{

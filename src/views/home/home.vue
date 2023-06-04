@@ -51,7 +51,7 @@
     </div>
 </template>
   
-<script setup>
+<script setup> // setup是组合式 API 的核心一定要写
 import { ref } from 'vue'
 import {
     Document,
@@ -92,5 +92,10 @@ import {
 }
 
 
+/* h3{
+    margin-left: 10px;
+} */
+
+/* .content */
 
 </style>

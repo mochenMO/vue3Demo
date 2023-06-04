@@ -11,7 +11,7 @@ const userLogin = (data) => {
 };
 
 // 管理员登录接口
-const adminLogin2 = function(data) {
+const adminLogin2 = (data) => {
   return instance.request({
     url: '', // 添加实际的URL
     method: 'post',
@@ -37,11 +37,10 @@ const getAllClassrooms = () => {
 };
 
 // 删除教室接口
-const deleteClassroom = (params) => {
+const deleteClassroom = async (id) => {
   return instance.request({
-    url: "api/classroom/delete",
+    url: "api/classroom/delete"+ "/" + id,
     method: "get",
-    params
   });
 };
 
@@ -54,16 +53,27 @@ const editClassroom = (data) => {
   });
 };
 
+// // 获取单个教室接口
+// const getOneClassroom = (id) => {
+//   return instance.request({
+//     url: "api/classroom/one",
+//     method: "get",
+//     params: {
+//       id: id,
+//     },
+//   });
+// };
+
+
 // 获取单个教室接口
 const getOneClassroom = (id) => {
   return instance.request({
-    url: "api/classroom/one",
+    url: "api/classroom/one" + "/" + id,
     method: "get",
-    params: {
-      id: id,
-    },
   });
 };
+
+
 
 
 // 获取所有建筑接口

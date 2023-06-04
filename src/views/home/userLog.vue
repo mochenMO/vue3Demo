@@ -132,7 +132,23 @@ export default defineComponent({
 
         });
     },
+
+    toAdd() {
+      this.dialogFormVisible = true;
+      this.classroom = {
+        building: '',
+        id: null,
+        name: '',
+        school: ''
+      };
+
+
+    },
+
+
     addOrUpdateClassroom() {
+
+   
       const classroom = this.classroom;
       if (classroom.id) {
         // 调用编辑接口，将 classroom 对象作为参数发送请求
@@ -166,16 +182,10 @@ export default defineComponent({
           });
       }
     },
-    toAdd() {
-      this.dialogFormVisible = true;
-      this.classroom = {
-        building: '',
-        id: null,
-        name: '',
-        school: ''
-      };
-    },
+
     searchClassroom() {
+
+      
       // 根据搜索框的值进行搜索
       const id = parseInt(this.searchId);
       if (isNaN(id)) {

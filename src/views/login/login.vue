@@ -1,9 +1,10 @@
 
 
 <!--  // 功能列表
-1.删除默认值
-1.注册功能
-3.把“M”图标换了
+1.实现页面的跳转
+2.删除默认值
+3.注册功能
+4.把“M”图标换了
 -->
 
 
@@ -115,9 +116,9 @@ html {
     margin: 0
 }
 
-body{
-    // background:url(../../img/wallpaper.jpg) no-repeat;
-}
+// body{s
+//     // background:url(../../img/wallpaper.jpg) no-repeat;
+// }
 
 canvas {
     display: block;

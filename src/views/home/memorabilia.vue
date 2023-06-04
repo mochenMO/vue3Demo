@@ -6,13 +6,14 @@
 
 
 
-<script>
-
+<script setup> // setup是组合式 API 的核心一定要写
 
 </script>
 
 
 
 <style setup>
+
+
 
 </style>
