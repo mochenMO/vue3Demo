@@ -106,10 +106,6 @@ let searchId = ref();
 // function ================================================================================
 
 const initTableData = async () => {
-    // 
-    // let end = pageinfo.value.currentPage * pageinfo.value.pageSize;
-    // console.log(start, end);//////
-
     try {
         const res = await getAllClassrooms();      // 改这里，获得所用数据
         console.log(res);   ///////
@@ -118,11 +114,8 @@ const initTableData = async () => {
 
             let start = pageinfo.value.pageSize * (pageinfo.value.currentPage - 1);
             let end = Math.min(pageinfo.value.currentPage * pageinfo.value.pageSize,tableData.value.length);
-
-            console.log(start, end);
-
+            // console.log(start, end);
             tableData.value = tableData.value.slice(start,end);
-
         } else {
             console.log(res.msg);
         }
@@ -141,51 +134,29 @@ const handleCurrentChange = (val) => {
 };
 
 
-
 const delData = async (id) => {
     try {
-        const confirmResult = await ElMessageBox.confirm(
-            '是否确认删除',
-            'Warning',
-            {
-                confirmButtonText: '确认删除',
-                cancelButtonText: '在考虑一下',
-                type: 'warning',
-            }
-        );
-
-        if (confirmResult !== 'confirm') {
-            ElMessage({
-                type: 'info',
-                message: '在考虑一下',
-            });
-            return;
-        }
-
+        const confirmResult = await ElMessageBox.confirm('是否确认删除', 'Warning', {
+            confirmButtonText: '确认删除',
+            cancelButtonText: '在考虑一下',
+            type: 'warning',
+        });
+        if (confirmResult !== 'confirm') return;
         const res = await deleteClassroom(id);    // 改这里，删除功能
-
         if (res.success) {
-            initTableData();          // 更新数据  
-            ElMessage({
-                type: 'success',
-                message: '删除成功',
-            });
+            initTableData();
+            ElMessage.success('删除成功');
         } else {
             console.log(res.msg);
-            // 删除失败时弹出提示
-            ElMessage({
-                type: 'error',
-                message: '删除失败，请重试',
-            });
+            ElMessage.error('删除失败，请重试');
         }
     } catch (err) {
         console.log(err);
-        ElMessage({
-            type: 'error',
-            message: '删除失败，请重试',
-        });
+        ElMessage.error('删除失败，请重试');
     }
 };
+
+
 
 const addData = async () => {
     dialogFormVisible.value = true;
@@ -205,11 +176,7 @@ const saveData = async () => {
         else {
             await editClassroom(inputData.value);  // 改这里，更改功能
         }
-
-        await initTableData();
-
-
-
+        await initTableData();  // 更新数据
         // 操作成功的弹窗
         ElMessage.success('操作成功');
     } catch (err) {
@@ -223,13 +190,11 @@ const saveData = async () => {
 
 
 const searchData = async () => {
-
     try {
         if (!searchId.value) {
             initTableData();
         }
         else {
-
             let res = await getOneClassroom(searchId.value);   // 改这里，查询数据
             tableData.value = [res.data.classroom];          // 改这里，res.data.xxx
         }
