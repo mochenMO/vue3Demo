@@ -19,11 +19,12 @@
 
             <el-form ref="ruleFormRef" :model="userForm" status-icon :rules="rules" class="login-ruleForm">
                 <el-form-item prop="email">
-                    <el-input v-model="userForm.email" autocomplete="off" placeholder="请输入你的用户邮箱" suffix-icon="Message"  value="12345678@qq.com"/>
+                    <el-input v-model="userForm.email" autocomplete="off" placeholder="请输入你的用户邮箱" suffix-icon="Message" />
                 </el-form-item>
 
                 <el-form-item prop="password">
-                    <el-input v-model="userForm.password" type="password" autocomplete="off" placeholder="请输入你的用户密码" suffix-icon="Lock"  value="12345678"/>
+                    <el-input v-model="userForm.password" type="password" autocomplete="off" placeholder="请输入你的用户密码"
+                        suffix-icon="Lock" />
                 </el-form-item>
 
                 <el-form-item class="login-form-btns">
@@ -39,7 +40,7 @@
 <script>
 import { defineComponent, ref } from "vue"
 import { mapActions, storeToRefs } from "pinia";
-import { userLogin } from "../../http";
+import { userLogin, registerUser } from "../../http/index02";
 import { useUserStore } from "../../store/user";
 export default defineComponent({
     setup() {
@@ -76,12 +77,6 @@ export default defineComponent({
         btnLogin() {
             const that = this;
             const formEl = that.$refs.ruleFormRef //取ref对象
-            
-            
-            console.log(formEl);
-
-            console.log("22222");    //// 
-
 
             if (!formEl) return
             formEl.validate((valid) => {
@@ -91,14 +86,13 @@ export default defineComponent({
                     res.then(result => {
                         if (result.success) {
 
-                            console.log("111111");    //// 
-
+         
 
                             const userinfo = result.data.userinfo;
                             console.log(that);
                             that.setToken(userinfo.token);
                             that.fillUserinfo(userinfo);
-                            that.$router.push('/home');
+                            that.$router.push('/test');
                         }
                         else {
 
@@ -114,8 +108,16 @@ export default defineComponent({
             })
         },
         resetForm() {
-            const formEl = this.$refs.ruleFormRef //取ref对象
-            formEl.resetFields()
+            const temp = {
+                "email": "",
+                "password": "",
+                "userName": ""
+            };
+            const that = this;
+            temp.email = that.userForm.email;
+            temp.password = that.userForm.password;
+            temp.userName = that.userForm.password;
+            let res = registerUser(temp);
         }
     }
 
@@ -123,14 +125,21 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-body,html {
+body,
+html {
     margin: 0
 }
 
 
+.el-image{
+    width: 120px;
+    height: 120px;
+}
+
 canvas {
     display: block;
 }
+
 
 .login {
     height: calc(100vh - 20px);
@@ -138,7 +147,7 @@ canvas {
     display: flex;
     justify-content: center;
     align-items: center;
-    background:url(../../img/wallpaper.jpg) no-repeat;
+    background: url(../../img/wallpaper.jpg) no-repeat;
 }
 
 .login-form {
@@ -167,4 +176,5 @@ canvas {
 
 .login-ruleForm {
     margin: 10px;
-}</style>
+}
+</style>

@@ -223,11 +223,24 @@ import { useUserStore } from '../store/user'
 //路由表
 const routes = [
     {
-        path: '/',                                               // url访问路径 
-        name: 'home',                                            // 命名路由
-        component:  () => import('../views/home/home.vue')      // 实际文件路径  
+        path: '/',                                                // url访问路径 
+        name: 'login',                                            // 命名路由
+        component:  () => import('../views/login/login.vue')      // 实际文件路径  
     },
     
+    {
+        path: '/login02',                                                // url访问路径 
+        name: 'login02',                                            // 命名路由
+        component:  () => import('../views/login/login02.vue')      // 实际文件路径  
+    },
+
+    {
+        path: '/test',                                               // url访问路径 
+        name: 'test',                                            // 命名路由
+        component:  () => import('../views/test02.vue')      // 实际文件路径  
+    },
+
+
     // 登录页面
     {
         path: '/login',                                     // url访问路径 
