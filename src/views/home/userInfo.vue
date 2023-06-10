@@ -11,9 +11,15 @@
     <!-- table数据表 (改下面的内容，顺序随便)-->
     <el-table :data="tableData" style="width: 100%">
         <el-table-column prop="id" label="ID" width="120" />
-        <el-table-column prop="name" label="教室名称" width="120" />
-        <el-table-column prop="building" label="所在建筑" width="120" />
-        <el-table-column prop="school" label="所属学校" width="120" />
+        <el-table-column prop="binding" label="绑定" width="120" />
+        <el-table-column prop="createTime" label="创建时间" width="120" />
+        <el-table-column prop="state" label="状态" width="120" />
+        <el-table-column prop="token" label="token" width="120" />
+        <el-table-column prop="updateTime" label="更新时间" width="120" />
+        <el-table-column prop="userName" label="用户名" width="120" />
+        <el-table-column prop="userType" label="用户类型" width="120" />
+
+     
         <el-table-column fixed="right" label="功能管理" width="120">
             <template #default="scope">
                 <el-button link type="primary" size="small" @click="updateData(scope.row)">更新</el-button>
@@ -33,20 +39,41 @@
     <!-- 编辑框 (改下面的内容，顺序随便)-->
     <el-dialog v-model="dialogFormVisible" title="教室编辑">
         <el-form :model="inputData">
-            <el-form-item label="教室名称" :label-width="formLabelWidth">
-                <el-input v-model="inputData.name" autocomplete="off" />
+
+
+            <el-form-item label="绑定" :label-width="formLabelWidth">
+                <el-input v-model="inputData.binding" autocomplete="off" />
             </el-form-item>
 
-            <el-form-item label="所在建筑" :label-width="formLabelWidth">
-                <el-input v-model="inputData.building" autocomplete="off" />
+            <el-form-item label="创建时间" :label-width="formLabelWidth">
+                <el-input v-model="inputData.createTime" autocomplete="off" />
             </el-form-item>
 
 
-            <el-form-item label="所在建筑" :label-width="formLabelWidth">
-                <el-input v-model="inputData.school" autocomplete="off" />
+            <el-form-item label="状态" :label-width="formLabelWidth">
+                <el-input v-model="inputData.state" autocomplete="off" />
+            </el-form-item>
+
+            <el-form-item label="token" :label-width="formLabelWidth">
+                <el-input v-model="inputData.token" autocomplete="off" />
+            </el-form-item>
+
+            <el-form-item label="更新时间" :label-width="formLabelWidth">
+                <el-input v-model="inputData.updateTime" autocomplete="off" />
+            </el-form-item>
+
+
+            <el-form-item label="用户名" :label-width="formLabelWidth">
+                <el-input v-model="inputData.userName" autocomplete="off" />
+            </el-form-item>
+
+            <el-form-item label="用户类型" :label-width="formLabelWidth">
+                <el-input v-model="inputData.userType" autocomplete="off" />
             </el-form-item>
 
         </el-form>
+
+
 
 
         <template #footer>
@@ -72,17 +99,29 @@
 
 
 // 导入页面对应的js
-import { addClassroom, getAllClassrooms, deleteClassroom, editClassroom, getOneClassroom, getAllBuilding, getAllSchool } from '../../http/classroom';
-import { ref, watch } from 'vue'
+// import { addClassroom, getAllClassrooms, deleteClassroom, editClassroom, getOneClassroom, getAllBuilding, getAllSchool } from '../../http/classroom';
+import {
+  adduserinfo,
+  getAlluserinfo,
+  deleteuserinfo,
+  edituserinfo,
+  getOneuserinfo
+
+} from '../../http/userInfo';
+
+import { ref, watch } from 'vue';
 import { cloneDeep } from 'lodash';
 
+import { ElMessageBox, ElMessage } from 'element-plus/es';
+import 'element-plus/es/components/message-box/style/css';
+import 'element-plus/es/components/message/style/css';
 
 let tableData = ref([]);
 
 let pageinfo = ref({
     "currentPage": 1,
     "pageSize": 10,
-    "totalpage": 100
+    "totalpage": 1000
 });
 
 
@@ -92,11 +131,17 @@ let dialogFormVisible = ref(false);
 
 // 改下面的内容，与老师给的表一致
 let inputData = ref({
-    building: '',
-    id: null,
-    name: '',
-    school: ''
+    "binding": 0,
+    "createTime": "",
+    "id": 0,
+    "state": 0,
+    "token": "",
+    "updateTime": "",
+    "userName": "",
+    "userType": ""
 });
+
+
 
 
 
@@ -107,10 +152,10 @@ let searchId = ref();
 
 const initTableData = async () => {
     try {
-        const res = await getAllClassrooms();      // 改这里，获得所用数据
+        const res = await getAlluserinfo();      // 改这里，获得所用数据
         console.log(res);   ///////
         if (res.success) {
-            tableData.value = res.data.classrooms;   // 改这里，res.data.XXX (看控制台的输出)
+            tableData.value = res.data.userinfos;   // 改这里，res.data.XXX (看控制台的输出)
 
             let start = pageinfo.value.pageSize * (pageinfo.value.currentPage - 1);
             let end = Math.min(pageinfo.value.currentPage * pageinfo.value.pageSize,tableData.value.length);
@@ -135,6 +180,7 @@ const handleCurrentChange = (val) => {
 
 
 const delData = async (id) => {
+    console.log(id);
     try {
         const confirmResult = await ElMessageBox.confirm('是否确认删除', 'Warning', {
             confirmButtonText: '确认删除',
@@ -142,7 +188,7 @@ const delData = async (id) => {
             type: 'warning',
         });
         if (confirmResult !== 'confirm') return;
-        const res = await deleteClassroom(id);    // 改这里，删除功能
+        const res = await deleteuserinfo(id);    // 改这里，删除功能
         if (res.success) {
             initTableData();
             ElMessage.success('删除成功');
@@ -171,10 +217,10 @@ const saveData = async () => {
     try {
         dialogFormVisible.value = false;
         if (!inputData.value.id) {
-            await addClassroom(inputData.value);    // 改这里，添加功能
+            await adduserinfo(inputData.value);    // 改这里，添加功能
         }
         else {
-            await editClassroom(inputData.value);  // 改这里，更改功能
+            await edituserinfo(inputData.value);  // 改这里，更改功能
         }
         await initTableData();  // 更新数据
         // 操作成功的弹窗
@@ -195,8 +241,22 @@ const searchData = async () => {
             initTableData();
         }
         else {
-            let res = await getOneClassroom(searchId.value);   // 改这里，查询数据
-            tableData.value = [res.data.classroom];          // 改这里，res.data.xxx
+
+            const res = await getAlluserinfo();  
+            const targetData = res.data.userinfos.find(data => data.id == searchId.value);
+
+            console.log("asdsad",tableData.value);
+
+            console.log(targetData);
+
+            if(tableData == null){
+                ElMessage.error('查询失败，请重试');
+                return;
+            }
+
+            // let res = await getOneuserinfo(searchId.value);   // 改这里，查询数据
+
+            tableData.value = [targetData];          // 改这里，res.data.xxx
         }
         ElMessage.success('查询成功');
     } catch (err) {
@@ -207,7 +267,6 @@ const searchData = async () => {
         ElMessage.error('查询失败，请重试');
     }
 }
-
 
 const clearData = () => {
     Object.keys(inputData.value).forEach(key => {

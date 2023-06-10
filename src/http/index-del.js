@@ -8,14 +8,6 @@ const userLogin=(data)=>{
     })
 }
 
-const registerUser=(data)=>{
-    return instance.request({
-         url:'api/mobile/eregister', //fullpath=baseURL+url  http://api.jqrjq.cn/ + api/mobile/elogin
-         method:'post',
-         data,
-     })
- }
-
 
 const adminLogin=(data)=>{
    return instance.request({
@@ -62,5 +54,4 @@ export {
     adCateDelId,
     adCateAdd,
     adCateEdit,
-    registerUser,
 } 

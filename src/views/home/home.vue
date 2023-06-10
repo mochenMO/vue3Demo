@@ -27,17 +27,17 @@
             </el-menu-item>
 
             <el-menu-item index="3">
-                <el-icon><document /></el-icon>
+                <el-icon><icon-menu /></el-icon>
                 <template #title><router-link to="/home/userArticle">用户文章管理</router-link></template>
             </el-menu-item>
 
             <el-menu-item index="4">
-                <el-icon><setting /></el-icon>
+                <el-icon><icon-menu /></el-icon>
                 <template #title><router-link to="/home/memorabilia">用户大事记管理</router-link></template>
             </el-menu-item>
 
             <el-menu-item index="5">
-                <el-icon><setting /></el-icon>
+                <el-icon><icon-menu /></el-icon>
                 <template #title><router-link to="/home/userLog">用户日志管理</router-link></template>
             </el-menu-item>
         </el-menu>
@@ -72,6 +72,10 @@ import {
   
 
 <style>
+
+a {
+  text-decoration: none;
+}
 
 .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px;
