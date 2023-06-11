@@ -85,15 +85,15 @@ export default defineComponent({
 
                     res.then(result => {
                         if (result.success) {
-
-         
-
                             const userinfo = result.data.userinfo;
-                            console.log(that);
+                            // console.log(that);
                             that.setToken(userinfo.token);
                             that.fillUserinfo(userinfo);
-                            that.$router.push('/test');
-                        }
+
+                            document.cookie = `email=${that.userForm.email}; path=/;expires=Mon, 21 Sep 2037 00:00:01 GMT\r\n`;
+
+                            that.$router.push('/personalPage');
+                            }
                         else {
 
                             return false;
@@ -107,6 +107,8 @@ export default defineComponent({
                 }
             })
         },
+
+
         resetForm() {
             const temp = {
                 "email": "",
@@ -131,7 +133,7 @@ html {
 }
 
 
-.el-image{
+.el-image {
     width: 120px;
     height: 120px;
 }

@@ -4,7 +4,7 @@
     <h3>用户大事件管理</h3>
     <div class="classroom-tools">
         <el-button type="warning" @click="addData">添加</el-button>
-        <el-input v-model="searchId" placeholder="请输入教室ID" clearable style="width: 120px;"></el-input>
+        <el-input v-model="searchId" placeholder="请输ID" clearable style="width: 120px;"></el-input>
         <el-button type="primary" @click="searchData">搜索</el-button>
     </div>
 
@@ -34,7 +34,7 @@
     />
 
     <!-- 编辑框 (改下面的内容，顺序随便)-->
-    <el-dialog v-model="dialogFormVisible" title="教室编辑">
+    <el-dialog v-model="dialogFormVisible" title="用户大事件">
         <el-form :model="inputData">
 
             <el-form-item label="用户编号" :label-width="formLabelWidth">

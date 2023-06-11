@@ -4,7 +4,7 @@
     <h3>用户等级管理</h3>
     <div class="classroom-tools">
         <el-button type="warning" @click="addData">添加</el-button>
-        <el-input v-model="searchId" placeholder="请输入教室ID" clearable style="width: 120px;"></el-input>
+        <el-input v-model="searchId" placeholder="请输入ID" clearable style="width: 120px;"></el-input>
         <el-button type="primary" @click="searchData">搜索</el-button>
     </div>
   
@@ -33,7 +33,7 @@
     />
   
     <!-- 编辑框 (改下面的内容，顺序随便)-->
-    <el-dialog v-model="dialogFormVisible" title="教室编辑">
+    <el-dialog v-model="dialogFormVisible" title="用户等级">
         <el-form :model="inputData">
             <el-form-item label="教室名称" :label-width="formLabelWidth">
                 <el-input v-model="inputData.name" autocomplete="off" />

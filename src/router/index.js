@@ -224,14 +224,15 @@ import { useUserStore } from '../store/user'
 const routes = [
     {
         path: '/',                                                // url访问路径 
-        name: 'login',                                            // 命名路由
-        component:  () => import('../views/login/login.vue')      // 实际文件路径  
+        redirect: '/login'
+        // name: 'login',                                            // 命名路由
+        // component:  () => import('../views/login/login.vue')      // 实际文件路径  
     },
     
     {
-        path: '/test',                                               // url访问路径 
-        name: 'test',                                            // 命名路由
-        component:  () => import('../views/test02.vue')      // 实际文件路径  
+        path: '/personalPage',                                               // url访问路径 
+        name: 'personalPage',                                            // 命名路由
+        component:  () => import('../views/personalPage.vue')      // 实际文件路径  
     },
 
 
