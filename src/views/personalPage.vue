@@ -7,7 +7,7 @@
                 <!-- 用户 要去掉 -->
 
 
-                <img class="headshot-container" src="../img/headshot.PNG" />
+                <img class="headshot-container" src="../img/headshot.PNG"  @click="goHome"/>
 
                 <!-- <div class="headshot-container">    
         </div> -->
@@ -355,6 +355,7 @@ import { getAllUserLog, addUserLog, getOneUserLog } from "../http/userLog";
 import { cloneDeep } from 'lodash';
 import { ref, watch, computed } from 'vue';
 
+import route from "../router"
 
 let username = ref();
 let userID = ref();
@@ -705,6 +706,12 @@ const clearUserLogData = () => {
 };
 
 
+const goHome = ()=>{
+    route.push("/home")
+}
+
+
+
 </script>
 
 
@@ -724,10 +731,7 @@ body {
     height: 1700px;
     margin: 0 auto;
 
-    border: 1px solid red;
-    /*  =====*/
-
-
+    /* border: 1px solid red;  =====*/
 
     display: flex;
     border-radius: 15px;
@@ -738,15 +742,12 @@ body {
     width: 300px;
     height: 1700px;
 
-    border: 1px solid red;
-    /*  =====*/
+    /*border: 1px solid red;  =====*/
 
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    /* 一行中的子容器放不下时，会自动换行 */
-    align-content: flex-start;
-    /* 自动换行后，行与行之间没有间隔 */
+    flex-wrap: wrap;/* 一行中的子容器放不下时，会自动换行 */
+    align-content: flex-start;/* 自动换行后，行与行之间没有间隔 */
     border-radius: 15px;
 
 }
@@ -757,16 +758,12 @@ body {
     width: 890px;
     height: 1700px;
 
-    border: 1px solid red;
-    /* =====*/
-
+    /*border: 1px solid red; =====*/
 
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    /* 一行中的子容器放不下时，会自动换行 */
-    align-content: flex-start;
-    /* 自动换行后，行与行之间没有间隔 */
+    flex-wrap: wrap;/* 一行中的子容器放不下时，会自动换行 */
+    align-content: flex-start;/* 自动换行后，行与行之间没有间隔 */
     border-radius: 15px;
 }
 
@@ -776,24 +773,21 @@ body {
     width: 260px;
     height: 400px;
     margin-top: 40px;
-    border: 1px solid red;
-    /*=====*/
+    border: 1px solid #c0c0c0;/*=====*/
     border-radius: 15px;
     background-color: #fff;
 
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    /* 一行中的子容器放不下时，会自动换行 */
-    align-content: flex-start;
-    /* 自动换行后，行与行之间没有间隔 */
+    flex-wrap: wrap;/* 一行中的子容器放不下时，会自动换行 */
+    align-content: flex-start;/* 自动换行后，行与行之间没有间隔 */
 }
 
 .memorabilia-container {
     width: 260px;
     height: 350px;
     margin-top: 20px;
-    border: 1px solid red;
+    border: 1px solid #c0c0c0;
     /*=====*/
     border-radius: 15px;
     background-color: #fff;
@@ -811,7 +805,7 @@ body {
     width: 260px;
     height: 300px;
     margin-top: 20px;
-    border: 1px solid red;
+    border: 1px solid #c0c0c0;
     /*=====*/
     border-radius: 15px;
     background-color: #fff;
@@ -826,7 +820,7 @@ body {
 .search-container {
     width: 810px;
     height: 40px;
-    border: 1px solid red;
+    border: 1px solid #c0c0c0;
     /*=====*/
     margin-top: 40px;
     border-radius: 15px;
@@ -848,44 +842,46 @@ body {
 .username-container {
     width: 200px;
     height: 40px;
-    border: 1px solid red;
+    border: 1px solid #c0c0c0;
     /*  =====*/
 
     margin-top: 20px;
     line-height: 40px;
     text-align: center;
+    border-radius: 15px;
 }
 
 
 .level-container {
     width: 200px;
     height: 40px;
-    border: 1px solid red;
+    border: 1px solid #c0c0c0;
     /*  =====*/
 
     margin-top: 20px;
     line-height: 40px;
     text-align: center;
+    border-radius: 15px;
 }
 
 
 .epithet-container {
     width: 200px;
     height: 40px;
-    border: 1px solid red;
+    border: 1px solid #c0c0c0;
     /*  =====*/
 
     /* margin-top: 20px; */
     line-height: 40px;
     text-align: center;
+    border-radius: 15px;
 }
 
 
 .user-control-container {
     width: 180px;
     height: 30px;
-    border: 1px solid red;
-    /*  =====*/
+    /*  border: 1px solid red; =====*/
 
     margin-top: 20px;
     line-height: 30px;
@@ -897,8 +893,7 @@ body {
 
 .user-control-container div {
     width: 80px;
-    border: 1px solid red;
-    /*  =====*/
+    border: 1px solid #c0c0c0; /*  =====*/
     border-radius: 15px;
     cursor: default;
 }
@@ -931,7 +926,7 @@ body {
 .things-container {
     width: 250px;
     height: 40px;
-    border: 1px solid red;
+    border: 1px solid #c0c0c0;
     border-radius: 15px;
 
     margin-top: 15px;
@@ -944,8 +939,7 @@ body {
 .memorabilia-control-container {
     width: 180px;
     height: 30px;
-    border: 1px solid red;
-    /*  =====*/
+    /*border: 1px solid red;  =====*/
 
     margin-top: 20px;
     line-height: 30px;
@@ -956,9 +950,8 @@ body {
 }
 
 .memorabilia-control-container div {
-    width: 100px;
-    border: 1px solid red;
-    /*  =====*/
+    width: 110px;
+    border: 1px solid #c0c0c0;/*  =====*/
     border-radius: 15px;
     cursor: default;
 }
@@ -982,7 +975,7 @@ body {
 .userlog-things-container {
     width: 250px;
     height: 40px;
-    border: 1px solid red;
+    border: 1px solid #c0c0c0;
     border-radius: 15px;
 
     margin-top: 15px;
@@ -995,8 +988,7 @@ body {
 .userlog-control-container {
     width: 180px;
     height: 30px;
-    border: 1px solid red;
-    /*  =====*/
+    /*border: 1px solid red;  =====*/
 
     margin-top: 20px;
     line-height: 30px;
@@ -1007,9 +999,8 @@ body {
 }
 
 .userlog-control-container div {
-    width: 100px;
-    border: 1px solid red;
-    /*  =====*/
+    width: 110px;
+    border: 1px solid #c0c0c0;/*  =====*/
     border-radius: 15px;
     cursor: default;
 }
@@ -1021,7 +1012,7 @@ body {
 .search-txt-container {
     width: 650px;
     height: 40px;
-    border: 1px solid red;
+    border: 1px solid #c0c0c0;
     /*=====*/
 
     border-radius: 15px;
@@ -1033,7 +1024,7 @@ body {
 #search-btn1 {
     width: 80px;
     height: 30px;
-    border: 1px solid red;
+    border: 1px solid #c0c0c0;
     /*  =====*/
     border-radius: 15px;
 
@@ -1052,8 +1043,7 @@ body {
     width: 810px;
     height: 250px;
     margin-top: 10px;
-    border: 1px solid red;
-    /*=====*/
+    border: 1px solid #c0c0c0;/*=====*/
     border-radius: 15px;
     background-color: #fff;
 
@@ -1063,11 +1053,10 @@ body {
 
 
 .paper-img-container {
-    width: 300px;
+    width: 310px;
     height: 250px;
 
-    border: 1px solid red;
-    /*=====*/
+    /*border: 1px solid red;=====*/
     border-radius: 15px;
     background-color: #fff;
 
@@ -1079,8 +1068,7 @@ body {
     width: 500px;
     height: 250px;
 
-    border: 1px solid red;
-    /*=====*/
+    /*border: 1px solid red;=====*/
     border-radius: 15px;
     background-color: #fff;
 
@@ -1094,8 +1082,7 @@ body {
 
     width: 400px;
     height: 40px;
-    border: 1px solid red;
-    /*=====*/
+    /*border: 1px solid red;=====*/
     font-size: 24px;
     padding-left: 30px;
 
@@ -1110,45 +1097,44 @@ body {
     width: 400px;
     height: 150px;
     padding-left: 30px;
-    border: 1px solid red;
-    /*=====*/
+    /*border: 1px solid red;=====*/
 }
 
 
 
 #paper-img-container01 img{
     border-radius: 15px;
-    width: 300px;
+    width: 310px;
     height: 250px;
 }
 
 #paper-img-container02 img{
     border-radius: 15px;
-    width: 300px;
+    width: 310px;
     height: 250px;
 }
 
 #paper-img-container03 img{
     border-radius: 15px;
-    width: 300px;
+    width: 310px;
     height: 250px;
 }
 
 #paper-img-container04 img{
     border-radius: 15px;
-    width: 300px;
+    width: 310px;
     height: 250px;
 }
 
 #paper-img-container05 img{
     border-radius: 15px;
-    width: 300px;
+    width: 310px;
     height: 250px;
 }
 
 #paper-img-container06 img{
     border-radius: 15px;
-    width: 300px;
+    width: 310px;
     height: 250px;
 }
 
