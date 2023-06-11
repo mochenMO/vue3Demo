@@ -53,8 +53,8 @@
 
 
                 <div class="memorabilia-control-container">
-                    <div id="memorabilia-btn1" @click="getMemorabilia">查看资料</div>
-                    <div id="memorabilia-btn2">编辑资料</div>
+                    <div id="memorabilia-btn1" @click="getMemorabilia">查看更多信息</div>
+                    <!-- <div id="memorabilia-btn2">编辑资料</div> -->
                 </div>
 
             </div>
@@ -72,8 +72,8 @@
                 </div>
 
                 <div class="userlog-control-container">
-                    <div id="userlog-btn1"  @click="getUserLog">查看资料</div>
-                    <div id="userlog-btn2">编辑资料</div>
+                    <div id="userlog-btn1"  @click="getUserLog">查看更多信息</div>
+                    <!-- <div id="userlog-btn2">编辑资料</div> -->
                 </div>
             </div>
         </div>
@@ -96,13 +96,13 @@
 
             <div class="paper-container">
 
-                <div class="paper-img-container">
-
+                <div class="paper-img-container" id="paper-img-container01">
+                    <img  src="../img/1.PNG" />
                 </div>
 
                 <div class="txt-container">
-                    <p class="txt-title-container">文章标题</p>
-                    <p class="txt-content-container">文章内容</p>
+                    <p class="txt-title-container">C语言实现BP神经网络</p>
+                    <p class="txt-content-container">本文简要记录了作者在实现BP神经网络过程，学到的各种知识。注意只是简单记录一下用到的知识点，内容以公式和结论为主。</p>
                 </div>
             </div>
 
@@ -110,66 +110,66 @@
             <div class="paper-container">
 
                 <div class="txt-container">
-                    <p class="txt-title-container">文章标题</p>
-                    <p class="txt-content-container">文章内容</p>
+                    <p class="txt-title-container">x86 32位汇编知识整理</p>
+                    <p class="txt-content-container">本文介绍 X86 架构下的32位汇编，在 Windows操作系统中，用masm编译器进行运行和调试工作。内容包括JCC指令，函数及四种函数调用约定，串的处理，选择与循环结构，宏定义，结构体等知识。</p>
                 </div>
 
 
-                <div class="paper-img-container">
-
-                </div>
-            </div>
-
-
-            <div class="paper-container">
-
-                <div class="paper-img-container">
-
-                </div>
-
-                <div class="txt-container">
-                    <p class="txt-title-container">文章标题</p>
-                    <p class="txt-content-container">文章内容</p>
+                <div class="paper-img-container" id="paper-img-container02">
+                    <img  src="../img/5.PNG" />
                 </div>
             </div>
 
 
             <div class="paper-container">
 
-                <div class="txt-container">
-                    <p class="txt-title-container">文章标题</p>
-                    <p class="txt-content-container">文章内容</p>
-                </div>
-
-                <div class="paper-img-container">
-
-                </div>
-            </div>
-
-            <div class="paper-container">
-
-                <div class="paper-img-container">
-
+                <div class="paper-img-container" id="paper-img-container03">
+                    <img  src="../img/2.PNG" />
                 </div>
 
                 <div class="txt-container">
-                    <p class="txt-title-container">文章标题</p>
-                    <p class="txt-content-container">文章内容</p>
+                    <p class="txt-title-container">PowerShell知识整理</p>
+                    <p class="txt-content-container">PowerShell其内容且十分庞杂，文本主要旨在记录一些常用的PowerShell命令，并对PowerShell脚本相关的知识，做一个简要的记录，帮助读者快速上手PowerShell。</p>
                 </div>
-
-
             </div>
 
 
             <div class="paper-container">
 
                 <div class="txt-container">
-                    <p class="txt-title-container">文章标题</p>
-                    <p class="txt-content-container">文章内容</p>
+                    <p class="txt-title-container">论学习的重要性</p>
+                    <p class="txt-content-container">学习是人类进步和发展的基石，具有非常重要的意义,无论是在学校里还是在社会中，学习都是我们不断进步和成长的关键</p>
                 </div>
 
-                <div class="paper-img-container">
+                <div class="paper-img-container" id="paper-img-container04">
+                    <img  src="../img/3.PNG" />
+                </div>
+            </div>
 
+            <div class="paper-container">
+
+                <div class="paper-img-container" id="paper-img-container05">
+                    <img  src="../img/6.PNG" />
+                </div>
+
+                <div class="txt-container">
+                    <p class="txt-title-container">chatGPT的一点讨论</p>
+                    <p class="txt-content-container">在ChatGPT纪元中，提问题的能力和判断力也许是人类最重要的两个能力。我们这里提出五个关键问题，并且试图抛开网络上的二手观点，做出基于原理的判断。</p>
+                </div>
+
+
+            </div>
+
+
+            <div class="paper-container">
+
+                <div class="txt-container">
+                    <p class="txt-title-container">如何正确躺平</p>
+                    <p class="txt-content-container">躺平给我们带来更多的应该是思考，但并不是对社会不公平现象的思考，而是我们应该如何对待生活、对待工作的思考。</p>
+                </div>
+
+                <div class="paper-img-container" id="paper-img-container06">
+                    <img  src="../img/4.PNG" />
                 </div>
 
             </div>
@@ -711,16 +711,11 @@ const clearUserLogData = () => {
 
 
 
-
-
-
-
-
-
-
 <style>
 body {
     background-color: #eee;
+    /* font-family: "微软雅黑"; */
+    font-family:"Microsoft YaHei";
 }
 
 
@@ -823,10 +818,8 @@ body {
 
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    /* 一行中的子容器放不下时，会自动换行 */
-    align-content: flex-start;
-    /* 自动换行后，行与行之间没有间隔 */
+    flex-wrap: wrap;/* 一行中的子容器放不下时，会自动换行 */
+    align-content: flex-start;/* 自动换行后，行与行之间没有间隔 */
 }
 
 
@@ -963,7 +956,7 @@ body {
 }
 
 .memorabilia-control-container div {
-    width: 80px;
+    width: 100px;
     border: 1px solid red;
     /*  =====*/
     border-radius: 15px;
@@ -1014,10 +1007,11 @@ body {
 }
 
 .userlog-control-container div {
-    width: 80px;
+    width: 100px;
     border: 1px solid red;
     /*  =====*/
     border-radius: 15px;
+    cursor: default;
 }
 
 
@@ -1091,10 +1085,8 @@ body {
     background-color: #fff;
 
     display: flex;
-    flex-wrap: wrap;
-    /* 一行中的子容器放不下时，会自动换行 */
-    align-content: flex-start;
-    /* 自动换行后，行与行之间没有间隔 */
+    flex-wrap: wrap;/* 一行中的子容器放不下时，会自动换行 */
+    align-content: flex-start;/* 自动换行后，行与行之间没有间隔 */
 }
 
 
@@ -1108,6 +1100,8 @@ body {
     padding-left: 30px;
 
     margin-bottom: 0px;
+
+    line-height: 40px;
 }
 
 
@@ -1119,4 +1113,43 @@ body {
     border: 1px solid red;
     /*=====*/
 }
+
+
+
+#paper-img-container01 img{
+    border-radius: 15px;
+    width: 300px;
+    height: 250px;
+}
+
+#paper-img-container02 img{
+    border-radius: 15px;
+    width: 300px;
+    height: 250px;
+}
+
+#paper-img-container03 img{
+    border-radius: 15px;
+    width: 300px;
+    height: 250px;
+}
+
+#paper-img-container04 img{
+    border-radius: 15px;
+    width: 300px;
+    height: 250px;
+}
+
+#paper-img-container05 img{
+    border-radius: 15px;
+    width: 300px;
+    height: 250px;
+}
+
+#paper-img-container06 img{
+    border-radius: 15px;
+    width: 300px;
+    height: 250px;
+}
+
 </style>

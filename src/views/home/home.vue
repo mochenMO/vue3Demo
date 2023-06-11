@@ -26,10 +26,10 @@
                 <template #title><router-link to="/home/userLevel">用户等级管理</router-link></template>
             </el-menu-item>
 
-            <el-menu-item index="3">
+            <!-- <el-menu-item index="3">
                 <el-icon><icon-menu /></el-icon>
                 <template #title><router-link to="/home/userArticle">用户文章管理</router-link></template>
-            </el-menu-item>
+            </el-menu-item> -->
 
             <el-menu-item index="4">
                 <el-icon><icon-menu /></el-icon>
