@@ -30,5 +30,8 @@ export default defineConfig({
         additionalData:'@import "./src/style/main.scss";'
       }
     }
+  },base: "/vue3Demo/",
+  build: {
+    outDir: "docs"
   }
 })
